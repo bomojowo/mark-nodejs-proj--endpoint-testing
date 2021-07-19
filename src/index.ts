@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import dotenv from "dotenv"; // loads environment variables from a .env file into process.env
 import app from "./server";
 
 // load .env file contents into process.env
