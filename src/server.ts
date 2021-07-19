@@ -69,4 +69,19 @@ app.get("/quest/decline", (req, res) => {
   });
 });
 
+app.get("/quest/start/impossible", (req, res) => {
+  res.json({
+    location: "Miami",
+    speech: {
+      speaker: {
+        name: "Bob"
+      },
+    text: "fireball dragon excruciating"
+    },
+    options: {
+      restart: "/"
+    }
+  })
+})
+
 export default app;
