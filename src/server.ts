@@ -69,6 +69,34 @@ app.get("/quest/decline", (req, res) => {
   });
 });
 
+app.get("/quest/start/easy", (req, res) => {
+  res.json({
+    location: "Mountain",
+    speech: {
+      speaker: {
+        name: "Liam"
+      }
+    },
+    options: {
+      restart: "/"
+    }
+  })
+})
+
+app.get("/quest/start/hard", (req, res) => {
+  res.json({
+    location: "wall of berlin",
+    speech:{
+      speaker:{
+        name: "Jaden"
+      },
+    },
+    options:{
+      restart: "/"
+    }
+  })
+})
+
 app.get("/quest/start/impossible", (req, res) => {
   res.json({
     location: "Miami",
