@@ -37,7 +37,27 @@ test("GET /quest/accept has our mysterious robed figure give a couple of further
 
   // check that there are at least two further options
   expect(Object.keys(response.body.options).length).toBeGreaterThanOrEqual(2);
+
 });
+
+test("GET /quest/start/easy responds with instant fireballs", async() =>{
+  const response = await supertest(app).get("/quest/start/easy");
+
+  expect(response.body.location).toBe("Mountain")
+  expect(response.body.speech.speaker.name).toBe("Liam");
+  console.log(response.body)
+  expect(response.body.options).toStrictEqual({restart: "/"})
+  
+})
+
+test("GET /quest/start/hard responds with a dragon", async() => {
+  const response = await supertest(app).get("/quest/start/hard")
+
+  expect(response.body.location).toBe("wall of berlin")
+  expect(response.body.speech.speaker.name).toBe("Jaden")
+
+  expect(response.body.options).toStrictEqual({restart: "/"})
+})
 
 test("GET /quest/decline responds with an apocalyptic message", async () => {
   const response = await supertest(app).get("/quest/decline");
@@ -53,7 +73,7 @@ test("GET /quest/decline responds with an apocalyptic message", async () => {
   expect(response.body.speech.text).toMatch(/mistake/i);
 
   // only includes the option to restart
-  expect(response.body.options).toStrictEqual({ restart: "/" });
+  expect(response.body.options).toMatchObject({ restart: "/" });
 });
 
 test("GET /quest/start/impossible responds with instant 'death'", async () => {
