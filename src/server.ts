@@ -112,4 +112,28 @@ app.get("/quest/start/impossible", (req, res) => {
   })
 })
 
+app.get("/testerOne", (req, res) => {
+  res.json({
+    location:"WM",
+    speech: {
+      speaker: {
+        name: "bukky"
+      }
+    },
+    text: "best"
+  })
+})
+
+app.get("/testerTwo", (req, res) => {
+  res.json({
+    location: "London",
+    speech: {
+      speaker: {
+        name: "RM"
+      }
+    },
+    text: "balegdah"
+  })
+})
+
 export default app;

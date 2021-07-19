@@ -94,7 +94,7 @@ test("GET /quest/start/impossible responds with instant 'death'", async () => {
   expect(response.body.options).toMatchObject({ restart: "/" });
 });
 
-test("GET /help",async() => {
+test("GET /help", async() => {
   const response = await supertest(app).get("/help");
 
   expect(response.body.location).toBeDefined();
@@ -103,4 +103,20 @@ test("GET /help",async() => {
   expect(response.body.speech.text).toMatch(/endpoint/i);
 
   expect(response.body.options).toMatchObject({backToStart: "/"})
+})
+
+test("GET /testerOne", async() => {
+  const response = await supertest(app).get("/testerOne");
+
+  expect(response.body.location).toBeDefined()
+  expect(response.body.speech.speaker.name).toMatch(/bukky/)
+  expect(response.body.text).toBe('best')
+})
+
+test("GET /testerTwo", async() => {
+  const response = await supertest(app).get("/testerTwo");
+
+  expect(response.body.location).toBeDefined()
+  expect(response.body.speech.speaker.name).toMatch(/RM/i)
+  expect(response.body.text).toContain("leg")
 })
