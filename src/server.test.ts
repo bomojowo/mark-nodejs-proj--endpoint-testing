@@ -120,3 +120,11 @@ test("GET /testerTwo", async() => {
   expect(response.body.speech.speaker.name).toMatch(/RM/i)
   expect(response.body.text).toContain("leg")
 })
+
+test("GET /testerThree", async() => {
+  const response = await supertest(app).get("/testerThree");
+
+  expect(response.body.location).toBeDefined();
+  expect(response.body.speech.speaker.name).toBeDefined()
+  expect(response.body.text).toBeDefined()
+})

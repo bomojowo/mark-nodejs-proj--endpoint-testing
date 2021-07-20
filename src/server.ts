@@ -136,4 +136,16 @@ app.get("/testerTwo", (req, res) => {
   })
 })
 
+app.get("/testerThree", (req, res) => {
+  res.json({
+    location: 'Maldives',
+    speech: {
+      speaker: {
+        name: "Me"
+      }
+    },
+    text: "Honeymoon!"
+  })
+})
+
 export default app;
